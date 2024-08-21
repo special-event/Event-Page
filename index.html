@@ -78,37 +78,68 @@
         }
         
         .offer {
-            background-color: #8A2BE2; /* মূল ব্যাকগ্রাউন্ড কালার */
-            color: white;
-            font-size: 15px;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
-            opacity: 0;
-            animation: slideUp 1s ease-in-out forwards;
+    background-color: #8A2BE2; /* মূল ব্যাকগ্রাউন্ড কালার */
+    color: white;
+    font-size: 15px;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    border: 2px solid transparent;
+    animation: slideUp 1s ease-in-out forwards, glow 2s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        border-color: transparent;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0);
+    }
+    50% {
+        border-color: #00fffb;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.offer:hover {
+    background-color: #571397; /* হোভার করার পর ব্যাকগ্রাউন্ড কালার */
+    transform: scale(1.1); /* হোভার করলে বড় দেখাবে */
+    animation: none; /* হোভার করলে মূল অ্যানিমেশন বন্ধ হবে */
+}
+
+.offer:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, transparent, #00fffb, transparent);
+    animation: borderGlow 1.5s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
         }
-        @keyframes slideUp {
-            0% {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        .offer:nth-child(3) { animation-delay: 0.2s; }
-        .offer:nth-child(4) { animation-delay: 0.4s; }
-        .offer:nth-child(5) { animation-delay: 0.6s; }
-        .offer:nth-child(6) { animation-delay: 0.8s; }
-        .offer:nth-child(7) { animation-delay: 1s; }
         
-        .offer:hover {
-            background-color: #571397; /* হোভার করার পর ব্যাকগ্রাউন্ড কালার */
-            transform: scale(1.1); /* হোভার করলে বড় দেখাবে */
-        }
         #time-remaining {
             font-size: 24px;
             font-family: "Stylish", sans-serif;
