@@ -77,68 +77,44 @@
           margin-bottom: 25px; 
         }
         
-        .offer {
+    .offer {
     background-color: #8A2BE2; /* মূল ব্যাকগ্রাউন্ড কালার */
     color: white;
-    font-size: 15px;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border-radius: 12px;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
     cursor: pointer;
-    opacity: 0;
-    border: 2px solid transparent;
-    animation: slideUp 1s ease-in-out forwards, glow 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
+    overflow: hidden;
 }
 
-@keyframes slideUp {
-    0% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes glow {
-    0%, 100% {
-        border-color: transparent;
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0);
-    }
-    50% {
-        border-color: #00fffb;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    }
-}
-
-.offer:hover {
-    background-color: #571397; /* হোভার করার পর ব্যাকগ্রাউন্ড কালার */
-    transform: scale(1.1); /* হোভার করলে বড় দেখাবে */
-    animation: none; /* হোভার করলে মূল অ্যানিমেশন বন্ধ হবে */
-}
-
-.offer:hover::before {
+.offer::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 12px;
-    background: linear-gradient(45deg, transparent, #00fffb, transparent);
-    animation: borderGlow 1.5s linear infinite;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-100%);
+    transition: all 0.4s ease;
 }
 
-@keyframes borderGlow {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-        }
+.offer:active::before {
+    transform: translateX(0);
+}
+
+.offer:active {
+    background-color: #571397; /* হোভার করার পর ব্যাকগ্রাউন্ড কালার */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.03); /* হোভার করলে অফারটি বড় দেখাবে */
+            }
         
         #time-remaining {
             font-size: 24px;
